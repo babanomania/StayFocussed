@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import styles from './style';
 
-class PlayButton extends React.Component {
+class MusicControl extends React.Component {
 
   _StartMusic() {
     console.log('button clicked');
@@ -11,12 +12,12 @@ class PlayButton extends React.Component {
   render() {
     return (
       <TouchableOpacity
-        style={sPlaybutton.playButton}
+        style={[styles.button, this.props.style]}
         onPress={this._StartMusic}
         activeOpacity = { .5 }>
 
         <Ionicons name="md-play" size={20} color="white" >
-          <Text style={sPlaybutton.TextStyle}> {this.props.name} </Text>
+          <Text style={styles.TextStyle}> {this.props.name} </Text>
         </Ionicons>
 
       </TouchableOpacity>
@@ -24,26 +25,4 @@ class PlayButton extends React.Component {
   }
 }
 
-const sPlaybutton = StyleSheet.create({
-
-  playButton: {
-    marginTop:10,
-    paddingTop:15,
-    paddingBottom:15,
-    padding: 30,
-    marginLeft:30,
-    marginRight:30,
-    backgroundColor:'#00BCD4',
-    borderRadius:30,
-    borderWidth: 1,
-    borderColor: '#fff'
-  },
-
-  TextStyle:{
-      color:'#fff',
-      textAlign:'center',
-  }
-});
-
-
-export default PlayButton
+export default MusicControl
